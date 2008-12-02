@@ -6,6 +6,8 @@ class CreatePageObjects < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :page_objects, :urn
+    add_index :page_objects, :accept_list_id
   end
 
   def self.down

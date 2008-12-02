@@ -50,7 +50,7 @@ class PageObjectsController < ApplicationController
   # POST /page_objects
   # POST /page_objects.xml
   def create
-    @page_object = PageObject.new(params[:page_object])
+    @page_object = PageObject.new_by_organization_uid(request.headers[ThriveSmart::Constants.ts_organization_headers_key], params[:page_object])
 
     respond_to do |format|
       if @page_object.save

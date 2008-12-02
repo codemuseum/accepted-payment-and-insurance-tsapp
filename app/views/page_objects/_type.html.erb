@@ -1,0 +1,12 @@
+<%# Takes type, builtin_types -%>
+<% builtin_type = builtin_types.detect {|bt| bt[:name] == type } -%>
+
+<span class="type">
+  <% if builtin_type %>
+    <% if builtin_type[:link] %><a href="<%= builtin_type[:link] %>" title="<%=h "Visit #{builtin_type[:description]} (#{builtin_type[:name]})" %>"><% end %>
+    <%= image_tag(builtin_type[:icon], :alt => "#{builtin_type[:description]} (#{builtin_type[:name]})") %>
+    <% if builtin_type[:link] %></a><% end %>
+  <% else %>
+    <span class="name"><%=h type %></span>
+  <% end %>
+</span>

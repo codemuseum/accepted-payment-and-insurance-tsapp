@@ -1,13 +1,31 @@
-<% # stylesheets 'scaffold' %>
-<% # javascripts 'prototype', 'effects', 'dragdrop', 'assets' %>
+<% stylesheets 'accepted-payment-and-insurance' %>
+<% # javascripts 'prototype', 'effects', 'dragdrop', 'assets' -%>
 
-<p>
-  <b>Urn:</b>
-  <%=h @page_object.urn %>
-</p>
 
-<p>
-  <b>Accept list:</b>
-  <%=h @page_object.accept_list %>
-</p>
+<% if (@page_object.accept_list.insurance_types && @page_object.accept_list.insurance_types.size > 0) || 
+      (@page_object.accept_list.payment_types && @page_object.accept_list.payment_types.size > 0) || 
+      !@page_object.accept_list.note.blank? %>
+<div class="box">
+  <h4><%=h @page_object.accept_list.header %></h4>
+
+  <div class="types">
+  <% (@page_object.accept_list.payment_types || []).each do |pt| %>
+    <%= render :partial => 'type', :locals => { :type => pt, :builtin_types => AcceptList::DEFAULT_PAYMENT_TYPES } %>
+  <% end %>
+  </div>
+
+  <div class="types">
+  <% (@page_object.accept_list.insurance_types || []).each do |it| %>
+    <%= render :partial => 'type', :locals => { :type => it, :builtin_types => AcceptList::DEFAULT_INSURANCE_TYPES } %>
+  <% end %>
+  </div>
+
+  <% if !@page_object.accept_list.note.blank? %>
+  <div class="note">
+    <%=h @page_object.accept_list.note %>
+  </div>
+  <% end %>
+
+</div>
+<% end %>
 

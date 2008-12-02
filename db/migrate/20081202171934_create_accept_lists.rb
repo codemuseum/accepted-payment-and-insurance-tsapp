@@ -9,6 +9,7 @@ class CreateAcceptLists < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :accept_lists, :organization_uid
   end
 
   def self.down

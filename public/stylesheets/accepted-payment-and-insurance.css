@@ -1,0 +1,7 @@
+.app-accepted-payment-and-insurance { text-align: center; margin-left: 5%; margin-right: 5%; }
+.app-accepted-payment-and-insurance h4 {text-decoration:underline;}
+.app-accepted-payment-and-insurance .types { margin-top: 10px; line-height: 45px; }
+.app-accepted-payment-and-insurance .type a img {border:0;}
+.app-accepted-payment-and-insurance .types .type img { vertical-align: middle; }
+.app-accepted-payment-and-insurance .types .type .name { padding: 9px; white-space: nowrap; }
+.app-accepted-payment-and-insurance .note { margin-top: 10px; }

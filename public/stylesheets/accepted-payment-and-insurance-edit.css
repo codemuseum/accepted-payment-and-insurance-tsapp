@@ -1,0 +1,19 @@
+.app-accepted-payment-and-insurance a.button { cursor:pointer; border:1px solid #aaa; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding:2px 5px; margin-top:8px;}
+.app-accepted-payment-and-insurance h4 label {font-weight:normal; display:block; font-size:85%; text-decoration:none;}
+.app-accepted-payment-and-insurance h4 input {font-size:100%; width:80%; text-align:center; text-decoration:underline;}
+.app-accepted-payment-and-insurance textarea {font-family:inherit; text-align:center;}
+
+.app-accepted-payment-and-insurance .selector .type {cursor:pointer;} 
+
+
+/*.app-accepted-payment-and-insurance .payment-type {
+  position: relative;
+  margin-left: 18px;
+  line-height: 40px;
+}*/
+.app-accepted-payment-and-insurance .types .type { position:relative; margin-left: 10px;}
+.app-accepted-payment-and-insurance .selector .type .remove {display:none;}
+.app-accepted-payment-and-insurance .types .type .remove {position:absolute; top: -20px; left: -10px; width: 20px; height:20px; font-size:1px; letter-spacing:-1px; overflow:hidden;}
+.app-accepted-payment-and-insurance .types .type .remove a {cursor:pointer; display:block; width:20px; height:20px; color:transparent; background: transparent url(/images/delete-small.png) 0px 0px no-repeat;}
+.app-accepted-payment-and-insurance .types .type .remove a:hover {background-position:0px -60px; background-color: transparent;}
+/*.app-accepted-payment-and-insurance .types .type .remove { position:absolute; top: -10px; left: -10px; }*/

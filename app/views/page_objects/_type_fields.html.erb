@@ -1,0 +1,15 @@
+<%# Takes type, builtin_types, nested_form_name = nil.
+    Send in type = nil for an empty form field -%>
+<% builtin_type = builtin_types.detect {|bt| !type.nil? && bt[:name] == type } -%>
+
+<span class="type <%= builtin_type ? ' builtin' : ' custom' %>">
+  <span class="remove"><a title="Click to remove this type">Remove</a></span>
+  <% if builtin_type %>
+    <% if builtin_type[:link] %><a title="<%=h "#{builtin_type[:description]} (#{builtin_type[:name]})" %>"><% end %>
+    <%= image_tag(builtin_type[:icon], :alt => "#{builtin_type[:description]} (#{builtin_type[:name]})") %>
+    <% if builtin_type[:link] %></a><% end %>
+    <span class="name hidden"><%=h type %></span>
+  <% else %>
+    <%= text_field_tag "#{nested_form_name}[name]", type %>
+  <% end %>
+</span>

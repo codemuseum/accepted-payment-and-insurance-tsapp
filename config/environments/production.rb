@@ -19,7 +19,7 @@ config.action_controller.perform_caching             = true
 
 # Enable serving of images, stylesheets, and javascripts from an asset server
 # config.action_controller.asset_host                  = "http://assets.example.com"
-config.action_controller.asset_host                  = "http://localhost:3031"
+config.action_controller.asset_host                  = "http://accepted-payment-and-insurance.heroku.com"
 
 
 # Disable delivery errors, bad email addresses will be ignored

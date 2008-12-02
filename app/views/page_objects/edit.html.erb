@@ -1,13 +1,78 @@
-<% # stylesheets 'scaffold' %>
-<% # javascripts 'prototype', 'effects', 'dragdrop', 'assets' %>
+<% stylesheets 'accepted-payment-and-insurance', 'accepted-payment-and-insurance-edit' -%>
+<% javascripts 'prototype', 'accepted-payment-and-insurance-edit' -%>
 
 <% fields_for_page_object do |f| %>
-  <p>
-    <%= f.label :urn %><br />
-    <%= f.text_field :urn %>
-  </p>
-  <p>
-    <%= f.label :accept_list %><br />
-    <%= f.text_field :accept_list %>
-  </p>
+<% fields_for "#{f.object_name}[assigned_accept_list]", f.object.accept_list do |af| -%>
+<div class="box">
+    
+    <h4>
+      <%= af.label :header %>
+      <%= af.text_field :header %>
+    </h4>
+    
+    <div class="types payment-types">
+    <% (af.object.payment_types || []).each do |pt| %>
+      <%= render :partial => 'type_fields', :locals => { :type => pt, :builtin_types => AcceptList::DEFAULT_PAYMENT_TYPES, :nested_form_name => "#{af.object_name}[assigned_payment_types][]" } %>
+    <% end %>
+    </div>
+    <div><a class='button add-payment'>Add Accepted Payment Type</a></div>
+
+    <div class="types insurance-types">
+    <% (af.object.insurance_types || []).each do |it| %>
+      <%= render :partial => 'type_fields', :locals => { :type => it, :builtin_types => AcceptList::DEFAULT_INSURANCE_TYPES, :nested_form_name => "#{af.object_name}[assigned_insurance_types][]" } %>
+    <% end %>
+    </div>
+    <div><a class='button add-insurance'>Add Accepted Insurance</a></div>
+
+    <div class="note">
+      <%= af.label :note, "Optional Note" %>
+      <div><%= af.text_area :note, :rows => 3 %></div>
+    </div>
+    
+    
+</div>
+
+
+<div class="new-custom-payment-code" style="display:none">
+  <%= render :partial => 'type_fields', :locals => { :type => nil, :builtin_types => AcceptList::DEFAULT_INSURANCE_TYPES, :nested_form_name => "#{af.object_name}[assigned_payment_types][]" } %>
+</div>
+
+<div class="new-custom-insurance-code" style="display:none">
+  <%= render :partial => 'type_fields', :locals => { :type => nil, :builtin_types => AcceptList::DEFAULT_INSURANCE_TYPES, :nested_form_name => "#{af.object_name}[assigned_insurance_types][]" } %>
+</div>
+
 <% end %>
+<% end %>
+
+<div class="selector payment-selector ts-selector-popdiv hidden">
+  <div class="close ts-close-button"><a title="Cancel selecting a new payment type.">Close</a></div>
+  
+  <div class="body">
+    <% AcceptList::DEFAULT_PAYMENT_TYPES.each do |pt| %>
+      <%= render :partial => 'type_fields', :locals => { :type => pt[:name], :builtin_types => AcceptList::DEFAULT_PAYMENT_TYPES } %>
+    <% end %>
+    
+    <span class="type custom">
+      <%= image_tag('custom.png', :title => "Add your own custom type") %>
+    </span>
+    
+  </div>
+
+  <div class="cleared"></div>
+</div>
+
+<div class="selector insurance-selector ts-selector-popdiv hidden">
+  <div class="close ts-close-button"><a title="Cancel selecting a new insurance type.">Close</a></div>
+  
+  <div class="body">
+    <% AcceptList::DEFAULT_INSURANCE_TYPES.each do |it| %>
+      <%= render :partial => 'type_fields', :locals => { :type => it[:name], :builtin_types => AcceptList::DEFAULT_INSURANCE_TYPES } %>
+    <% end %>
+    
+    <span class="type custom">
+      <%= image_tag('custom.png', :title => "Add your own custom type") %>
+    </span>
+  </div>
+
+  <div class="cleared"></div>
+</div>
