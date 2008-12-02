@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  header: MyString
+  payment_types: MyText
+  insurance_types: MyText
+  note: MyText
+  organization_uid: MyString
+
+two:
+  header: MyString
+  payment_types: MyText
+  insurance_types: MyText
+  note: MyText
+  organization_uid: MyString

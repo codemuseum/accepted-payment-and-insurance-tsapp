@@ -1,0 +1,13 @@
+<% # stylesheets 'scaffold' %>
+<% # javascripts 'prototype', 'effects', 'dragdrop', 'assets' %>
+
+<% fields_for_page_object do |f| %>
+  <p>
+    <%= f.label :urn %><br />
+    <%= f.text_field :urn %>
+  </p>
+  <p>
+    <%= f.label :accept_list %><br />
+    <%= f.text_field :accept_list %>
+  </p>
+<% end %>
